@@ -5,6 +5,7 @@ import java.util.concurrent.BlockingQueue;
 
 import org.config.Config;
 import org.gui.MainRawler;
+import org.jsoup.nodes.Document;
 import org.model.CrawDocument;
 
 public class Main {
@@ -19,8 +20,8 @@ public class Main {
 		//check config exist and use it, then use default!!
 		config = new Config();
 		if(config.has(0)){
-			BlockingQueue<CrawDocument>queue = new ArrayBlockingQueue<>(10);
-			config.setRegistry(queue);
+			BlockingQueue<Document>queue = new ArrayBlockingQueue<>(10);
+			config.setRegistry("queue",queue);
 		}
 		
 		MainRawler maingui = new MainRawler(config);

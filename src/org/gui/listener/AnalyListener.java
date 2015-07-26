@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.concurrent.BlockingQueue;
 
 import org.config.Config;
+import org.jsoup.nodes.Document;
 import org.model.CrawDocument;
 import org.net.Producer;
 
@@ -24,7 +25,7 @@ public class AnalyListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		BlockingQueue<CrawDocument>queue = (BlockingQueue<CrawDocument>)this.config.getRegistry(0);
+		BlockingQueue<Document>queue = (BlockingQueue<Document>)this.config.getRegistry("queue");
 		Producer anlyz = new Producer(queue,url);
 	}
 

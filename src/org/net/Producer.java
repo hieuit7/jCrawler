@@ -13,12 +13,12 @@ import org.parser.DocumentParser;
 public class Producer implements Runnable{
 
 
-	private BlockingQueue<CrawDocument>queue;
+	private BlockingQueue<Document>queue;
 
 	private String url;
 
 
-	public Producer(BlockingQueue<CrawDocument> queue,String url) {
+	public Producer(BlockingQueue<Document> queue,String url) {
 
 		this.queue = queue;
 		this.url = url;
@@ -32,14 +32,17 @@ public class Producer implements Runnable{
 			if(res.statusCode() == 200){
 				try {
 					Document doc = con.get();
-
-					//this.queue.put(doc);
+					
+					this.queue.put(doc);
 				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}else{
-				System.out.println("No connection to"+url+" !!"+res.statusCode());
+				
 			}
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block

@@ -1,5 +1,7 @@
 package org.gui;
 
-public class ConfigGui {
+import javax.swing.JFrame;
 
+public class ConfigGui extends JFrame{
+	 
 }
